@@ -105,16 +105,11 @@ export default function HeroBackground() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Intersection observer for scroll optimization
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isVisibleRef.current = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.02 }
-    );
-    observer.observe(canvas);
+    // Window visibility listener to optimize performance when tab is inactive
+    const handleVisibilityChange = () => {
+      isVisibleRef.current = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     // Animation Loop variables
     const startTime = Date.now();
@@ -178,7 +173,7 @@ export default function HeroBackground() {
       cancelAnimationFrame(animationId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
-      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -188,8 +183,8 @@ export default function HeroBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ display: 'block', height: '100vh' }}
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      style={{ display: 'block', width: '100vw', height: '100vh' }}
     />
   );
 }

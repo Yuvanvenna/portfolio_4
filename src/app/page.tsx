@@ -55,7 +55,7 @@ const projectsData: Record<string, Project> = {
       'VQ Codebook Discrete Latent Spaces',
       'Future-Frame Prediction Framework'
     ],
-    github: 'https://github.com/Diptendu369/drone_gaurd',
+    github: 'https://github.com/Yuvanvenna/drone_gaurd',
     architecture: [
       'EfficientX3D backbone extracts multi-scale spatiotemporal feature maps from consecutive video frames.',
       'Grouped Query Attention (GQA) scales spatial queries to focus feature representation on moving targets.',
@@ -152,10 +152,10 @@ export default function Home() {
               Engineering the Future of AI & Web
             </span>
             <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mt-4 mb-3">
-              Bento Hub Showcase
+              Hello, Welcome to My Space.
             </h2>
-            <p className="text-sm sm:text-base text-slate-400 max-w-xl">
-              Explore active SaaS products, quantum-enhanced machine learning papers, and live interactive ML validators.
+            <p className="text-sm sm:text-base text-slate-350 max-w-2xl leading-relaxed">
+              I&apos;m Venna Venkata Yuvan — a Full-Stack Engineer and AI/ML Researcher architecting scalable cloud platforms, deep learning computer vision systems, and hybrid quantum intelligence solutions.
             </p>
           </div>
           
