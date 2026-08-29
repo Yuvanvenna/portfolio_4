@@ -1,8 +1,15 @@
 'use client';
 
-import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Phone, Copy, Check, Terminal, ExternalLink } from 'lucide-react';
 import BentoCard from '../ui/BentoCard';
+
+const roles = [
+  'Full-Stack Developer & AI/ML Researcher',
+  'High-Throughput SaaS Architect',
+  'Hybrid Quantum ML Pioneer',
+  'Computer Vision & Systems Engineer'
+];
 
 const GithubIcon = ({ className, size = 18 }: { className?: string; size?: number }) => (
   <svg
@@ -42,8 +49,26 @@ const LinkedinIcon = ({ className, size = 18 }: { className?: string; size?: num
 );
 
 export default function HeroCard() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [shellTab, setShellTab] = useState<'status' | 'quantum' | 'stack'>('status');
+
+  // Cycle role titles every 3.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('yuvanvenna4@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <BentoCard glowColor="indigo" className="w-full p-6 sm:p-8 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-6 min-h-[260px]">
+    <BentoCard glowColor="indigo" className="w-full p-6 sm:p-8 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-6 min-h-[270px]">
       <div className="w-full md:w-3/5 flex flex-col justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-3 mb-3">
@@ -56,52 +81,171 @@ export default function HeroCard() {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-1.5 leading-none">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-2 leading-none">
             Venna Venkata Yuvan
           </h1>
-          <p className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 mb-3">
-            Full-Stack Developer & AI/ML Researcher
-          </p>
-          <p className="text-slate-350 text-xs sm:text-sm leading-relaxed max-w-xl">
+
+          {/* Dynamic rotating role text with smooth fade */}
+          <div className="h-7 mb-3 flex items-center">
+            <p className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 transition-all duration-500">
+              {roles[roleIndex]}
+            </p>
+          </div>
+
+          <p className="text-slate-350 text-xs sm:text-sm leading-relaxed max-w-xl mb-4">
             Building high-performance SaaS applications and advancing hybrid Classical-Quantum deep learning architectures. Specializing in Next.js, PyTorch, and Qiskit.
           </p>
+
+          {/* Quick Actions Bar */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
+            <button
+              onClick={handleCopyEmail}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-slate-200 transition-all cursor-pointer group"
+            >
+              {copied ? (
+                <>
+                  <Check size={12} className="text-emerald-400" />
+                  <span className="text-emerald-400 font-semibold">Email Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={12} className="text-indigo-400 group-hover:text-cyan-400 transition-colors" />
+                  <span>Copy Email</span>
+                </>
+              )}
+            </button>
+
+            <a
+              href="mailto:yuvanvenna4@gmail.com"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono bg-indigo-950/40 hover:bg-indigo-900/50 border border-indigo-800/40 text-indigo-300 hover:text-white transition-all"
+            >
+              <Mail size={12} />
+              <span>Get In Touch</span>
+            </a>
+
+            <a
+              href="http://www.linkedin.com/in/yuvan-venna-167b2a24b"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-mono bg-slate-900/60 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-cyan-400 transition-all"
+            >
+              <span>LinkedIn</span>
+              <ExternalLink size={10} />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* AI/ML Developer Console Component (Split Right Column) */}
-      <div className="w-full md:w-2/5 bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4.5 font-mono text-[11px] text-slate-400 flex flex-col justify-between h-48 md:h-52 shrink-0 select-none">
+      {/* AI/ML Developer Console Component (Interactive Split Right Column) */}
+      <div className="w-full md:w-2/5 bg-slate-950/70 border border-slate-800/80 rounded-2xl p-4 font-mono text-[11px] text-slate-400 flex flex-col justify-between min-h-[220px] shrink-0 select-none shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-900 pb-2">
-          <span className="text-indigo-400 font-bold">yuvan-developer-shell</span>
-          <span className="text-emerald-400 font-semibold animate-pulse">online</span>
-        </div>
-        <div className="space-y-1.5 py-2.5">
-          <div className="flex justify-between">
-            <span>DECISION_BOUNDARIES:</span>
-            <span className="text-emerald-400 font-bold">OPTIMIZED</span>
-          </div>
-          <div className="flex justify-between">
-            <span>CLASSICAL WEIGHTS:</span>
-            <span className="text-cyan-400">-30% PARAM SPACE</span>
-          </div>
-          <div className="flex justify-between">
-            <span>VQC INFERENCE FX:</span>
-            <span className="text-emerald-400 font-bold">ACTIVE (+15%)</span>
-          </div>
-        </div>
-        <div className="border-t border-slate-900 pt-2 flex flex-col gap-1.5">
           <div className="flex items-center gap-2">
-            <Mail size={12} className="text-indigo-400" />
-            <a href="mailto:yuvanvenna4@gmail.com" className="text-[10px] text-slate-300 hover:text-white transition-colors">yuvanvenna4@gmail.com</a>
+            <Terminal size={13} className="text-indigo-400" />
+            <span className="text-indigo-400 font-bold">yuvan-developer-shell</span>
           </div>
+          <span className="text-emerald-400 font-semibold flex items-center gap-1">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            online
+          </span>
+        </div>
+
+        {/* Tab Controls for live inspection */}
+        <div className="flex items-center gap-1.5 pt-2">
+          <button
+            onClick={() => setShellTab('status')}
+            className={`px-2 py-0.5 rounded text-[10px] cursor-pointer transition-colors ${
+              shellTab === 'status' ? 'bg-indigo-950 text-indigo-300 border border-indigo-800/50' : 'text-slate-500 hover:text-slate-300'
+            }`}
+          >
+            sys_stats
+          </button>
+          <button
+            onClick={() => setShellTab('quantum')}
+            className={`px-2 py-0.5 rounded text-[10px] cursor-pointer transition-colors ${
+              shellTab === 'quantum' ? 'bg-indigo-950 text-indigo-300 border border-indigo-800/50' : 'text-slate-500 hover:text-slate-300'
+            }`}
+          >
+            vqc_circuit
+          </button>
+          <button
+            onClick={() => setShellTab('stack')}
+            className={`px-2 py-0.5 rounded text-[10px] cursor-pointer transition-colors ${
+              shellTab === 'stack' ? 'bg-indigo-950 text-indigo-300 border border-indigo-800/50' : 'text-slate-500 hover:text-slate-300'
+            }`}
+          >
+            core_stack
+          </button>
+        </div>
+
+        {/* Shell content body */}
+        <div className="space-y-1.5 py-2 min-h-[70px]">
+          {shellTab === 'status' && (
+            <>
+              <div className="flex justify-between">
+                <span>DECISION_BOUNDARIES:</span>
+                <span className="text-emerald-400 font-bold">OPTIMIZED</span>
+              </div>
+              <div className="flex justify-between">
+                <span>CLASSICAL WEIGHTS:</span>
+                <span className="text-cyan-400">-30% PARAM SPACE</span>
+              </div>
+              <div className="flex justify-between">
+                <span>VQC INFERENCE FX:</span>
+                <span className="text-emerald-400 font-bold">ACTIVE (+15%)</span>
+              </div>
+            </>
+          )}
+
+          {shellTab === 'quantum' && (
+            <>
+              <div className="flex justify-between">
+                <span>QUBIT ENCODING:</span>
+                <span className="text-indigo-300">Angle Encoding (Ry)</span>
+              </div>
+              <div className="flex justify-between">
+                <span>ENTANGLEMENT:</span>
+                <span className="text-cyan-400">CNOT Circular Mesh</span>
+              </div>
+              <div className="flex justify-between">
+                <span>MEASUREMENT:</span>
+                <span className="text-emerald-400">&lt;Z&gt; Expectation</span>
+              </div>
+            </>
+          )}
+
+          {shellTab === 'stack' && (
+            <>
+              <div className="flex justify-between">
+                <span>RUNTIME:</span>
+                <span className="text-amber-400">Node / Next.js / Python</span>
+              </div>
+              <div className="flex justify-between">
+                <span>ML FRAMEWORKS:</span>
+                <span className="text-indigo-400">PyTorch, Qiskit, OpenCV</span>
+              </div>
+              <div className="flex justify-between">
+                <span>DATABASES:</span>
+                <span className="text-cyan-400">PostgreSQL, MongoDB, Supabase</span>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Shell footer contacts */}
+        <div className="border-t border-slate-900 pt-2 flex flex-col gap-1">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Phone size={12} className="text-cyan-400" />
-              <a href="tel:+919704388551" className="text-[10px] text-slate-300 hover:text-white transition-colors">+91-9704388551</a>
+            <div className="flex items-center gap-1.5">
+              <Mail size={11} className="text-indigo-400" />
+              <a href="mailto:yuvanvenna4@gmail.com" className="text-[10px] text-slate-300 hover:text-white transition-colors">yuvanvenna4@gmail.com</a>
             </div>
-            <div className="flex gap-2.5">
+            <div className="flex gap-2">
               <a href="https://github.com/yuvanvenna" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub"><GithubIcon size={12} /></a>
               <a href="http://www.linkedin.com/in/yuvan-venna-167b2a24b" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors" aria-label="LinkedIn"><LinkedinIcon size={12} /></a>
             </div>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Phone size={11} className="text-cyan-400" />
+            <a href="tel:+919704388551" className="text-[10px] text-slate-300 hover:text-white transition-colors">+91-9704388551</a>
           </div>
         </div>
       </div>

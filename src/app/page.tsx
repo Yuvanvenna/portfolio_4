@@ -8,7 +8,9 @@ import HeroCard from '@/components/sections/HeroCard';
 import Experience from '@/components/sections/Experience';
 import Skills from '@/components/sections/Skills';
 import Contact from '@/components/sections/Contact';
+import MetricsBar from '@/components/sections/MetricsBar';
 import ProjectModal from '@/components/ui/ProjectModal';
+import GlowCursor from '@/components/ui/GlowCursor';
 import { FolderGit2 } from 'lucide-react';
 
 interface Project {
@@ -138,6 +140,9 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-bg-dark text-slate-100 overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-200">
+      {/* Subtle Ambient Glowing Cursor Follower */}
+      <GlowCursor />
+
       {/* 3D Wave Particles Background */}
       <HeroBackground />
 
@@ -161,6 +166,9 @@ export default function Home() {
           
           {/* Main profile intro card */}
           <HeroCard />
+
+          {/* Key Engineering Impact Metrics Bar */}
+          <MetricsBar />
 
           {/* New Projects Section Header */}
           <div id="projects" className="flex items-center gap-2.5 mt-20 mb-10 pt-4">
