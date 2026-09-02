@@ -9,6 +9,7 @@ import Experience from '@/components/sections/Experience';
 import Skills from '@/components/sections/Skills';
 import Contact from '@/components/sections/Contact';
 import MetricsBar from '@/components/sections/MetricsBar';
+import GithubFeatured from '@/components/sections/GithubFeatured';
 import ProjectModal from '@/components/ui/ProjectModal';
 import GlowCursor from '@/components/ui/GlowCursor';
 import { FolderGit2 } from 'lucide-react';
@@ -182,6 +183,9 @@ export default function Home() {
 
           {/* Bento Layout Grid */}
           <BentoGrid onOpenProject={handleOpenProject} />
+
+          {/* Dynamic GitHub Repositories (Filtered by 'featured' topic) */}
+          <GithubFeatured />
         </div>
       </section>
 
