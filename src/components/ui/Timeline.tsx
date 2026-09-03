@@ -16,7 +16,7 @@ const experiences: TimelineItem[] = [
   {
     role: 'SaaS Intern',
     company: 'RVEIYA Dynamics',
-    period: 'July 2026 – Sep 2026',
+    period: 'July 2026 – Present',
     bullets: [
       'Engineered a complete WhatsApp marketing automation SaaS platform featuring message campaign broadcasts and dynamic template editors.',
       'Integrated AI conversation agents to automate customer replies and qualify pipeline leads dynamically.',
