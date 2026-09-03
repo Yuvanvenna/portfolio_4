@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, Copy, Check, Terminal, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Copy, Check, Terminal, ExternalLink, FileText } from 'lucide-react';
 import BentoCard from '../ui/BentoCard';
 
 const roles = [
@@ -121,6 +121,17 @@ export default function HeroCard() {
             >
               <Mail size={12} />
               <span>Get In Touch</span>
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono bg-cyan-950/40 hover:bg-cyan-900/50 border border-cyan-800/40 text-cyan-300 hover:text-white transition-all shadow-sm"
+            >
+              <FileText size={12} className="text-cyan-400" />
+              <span>Resume</span>
+              <ExternalLink size={10} />
             </a>
 
             <a

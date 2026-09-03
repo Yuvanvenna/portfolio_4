@@ -90,8 +90,8 @@ export default function FloatingNav() {
       colors: ['#6366F1', '#06B6D4', '#10B981'],
     });
 
-    // Simulate opening resume
-    window.open('https://drive.google.com/file/d/1X5XwZ1n9-5WJ_GjUvBvYk-gG63R-H_hE/view?usp=sharing', '_blank');
+    // Open resume link
+    window.open('https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link', '_blank');
   };
 
   const scrollToSection = (href: string) => {

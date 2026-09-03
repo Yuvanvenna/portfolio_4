@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, GraduationCap, ArrowUp, Send, Check } from 'lucide-react';
+import { Mail, Phone, GraduationCap, ArrowUp, Send, Check, FileText, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function Contact() {
@@ -99,6 +99,24 @@ export default function Contact() {
                 </a>
               </div>
             </div>
+
+            <a
+              href="https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between bg-slate-900/30 border border-slate-900 rounded-xl p-3.5 hover:border-slate-800 hover:bg-slate-900/50 transition-colors group cursor-pointer"
+            >
+              <div className="flex items-center gap-3.5">
+                <FileText className="text-emerald-400 shrink-0" size={16} />
+                <div>
+                  <p className="text-[10px] text-slate-500 uppercase mb-0.5">Curriculum Vitae / Resume</p>
+                  <span className="text-slate-300 group-hover:text-emerald-300 transition-colors">
+                    View Google Drive Document
+                  </span>
+                </div>
+              </div>
+              <ExternalLink size={14} className="text-slate-500 group-hover:text-emerald-400 transition-colors" />
+            </a>
           </div>
         </div>
 
