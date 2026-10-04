@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, GraduationCap, ArrowUp, Send, Check, FileText, ExternalLink } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { siteConfig } from '@/data/siteConfig';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -101,7 +102,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link"
+              href={siteConfig.resumeUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center justify-between bg-slate-900/30 border border-slate-900 rounded-xl p-3.5 hover:border-slate-800 hover:bg-slate-900/50 transition-colors group cursor-pointer"

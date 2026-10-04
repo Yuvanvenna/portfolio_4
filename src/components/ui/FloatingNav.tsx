@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { siteConfig } from '@/data/siteConfig';
 
 const GithubIcon = ({ className, size = 18 }: { className?: string; size?: number }) => (
   <svg
@@ -91,7 +92,7 @@ export default function FloatingNav() {
     });
 
     // Open resume link
-    window.open('https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link', '_blank');
+    window.open(siteConfig.resumeUrl, '_blank');
   };
 
   const scrollToSection = (href: string) => {

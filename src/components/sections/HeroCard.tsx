@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Copy, Check, Terminal, ExternalLink, FileText } from 'lucide-react';
 import BentoCard from '../ui/BentoCard';
+import { siteConfig } from '@/data/siteConfig';
 
 const roles = [
   'Full-Stack Developer & AI/ML Researcher',
@@ -124,7 +125,7 @@ export default function HeroCard() {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1Oe2r9BxuzXMGkA7wxaYaIbfoGHsqyQYJ/view?usp=drive_link"
+              href={siteConfig.resumeUrl}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono bg-cyan-950/40 hover:bg-cyan-900/50 border border-cyan-800/40 text-cyan-300 hover:text-white transition-all shadow-sm"
